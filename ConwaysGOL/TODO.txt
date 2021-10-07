@@ -1,0 +1,15 @@
+﻿KISS
+You're new at this, go slow
+Slow is smooth, Smooth is fast, smooth is progress
+Goal: Conway's game of life
+Tools: Visual Studio, SFML
+For the game framework look at other open source projects, see what's out there and choose what you like
+Conventions are the same ones used in the CPP Memory Management Course
+
+Game Start:
+See blank grid
+User clicks where they want to add cells
+Press space bar and simulation starts with one more per second
+Cells go off grid, they die
+
+Don't go to Github until you have to or at the end. Focus on writing code.
