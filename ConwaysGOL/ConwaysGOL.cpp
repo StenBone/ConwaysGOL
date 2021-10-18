@@ -1,3 +1,4 @@
+#include <Vector>
 #include <SFML/Graphics.hpp>
 
 namespace ConwaysGOL {
@@ -13,12 +14,17 @@ namespace ConwaysGOL {
 		GAME_OVER // Exit out of app and perform resource clean up
 	};
 
+	class Cell {};
+
 	int main()
 	{
 		GAME_STATES game_state = GAME_STATES::STAGING;
 
 		sf::RenderWindow window{ sf::VideoMode{APP_BOUNDS.x, APP_BOUNDS.y}, APP_NAME };
 		sf::RectangleShape box{sf::Vector2f{CELL_SIZE, CELL_SIZE}};
+
+		// INIT BOARD, INIT CELLS
+		Vector<Cell> board = {};
 
 		while (window.isOpen()) {
 
