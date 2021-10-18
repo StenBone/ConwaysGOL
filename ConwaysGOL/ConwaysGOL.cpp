@@ -1,20 +1,24 @@
-// ConwaysGOL.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
+#include <SFML/Graphics.hpp>
 
 int main()
 {
-    std::cout << "Hello World!\n";
-}
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Conway's Game of Life");
+	sf::RectangleShape box(sf::Vector2f(20.f, 20.f));
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+	while (window.isOpen()) {
+		
+		sf::Event event;
+		while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed) {
+				window.close();
+			}
+		}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+		window.clear(sf::Color::Black);
+		//DRAW LINES, UNTIL IT SHOULD BE CACHED
+		//UPDATE CELLS IF IT IS TIME TO
+		window.draw(box);
+		window.display();
+	}
+	return EXIT_SUCCESS;
+} // BE KIND
