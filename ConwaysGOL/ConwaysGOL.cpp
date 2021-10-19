@@ -24,7 +24,7 @@ namespace ConwaysGOL {
 		sf::RectangleShape box{sf::Vector2f{CELL_SIZE, CELL_SIZE}};
 
 		// INIT BOARD, INIT CELLS
-		Vector<Cell> board = {};
+		std::vector<Cell> board{};
 
 		while (window.isOpen()) {
 
