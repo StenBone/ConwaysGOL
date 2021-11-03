@@ -1,0 +1,3 @@
+# ConwaysGOL
+
+-Ben Stone
