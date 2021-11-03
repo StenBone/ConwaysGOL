@@ -12,11 +12,12 @@ const float		   BORDER_SIZE			{ 2.f };
 const float		   CELL_SIZE			{ 21.f };
 const float		   TOTAL_BORDER_SIZE	{ 2 * BORDER_SIZE };
 const float		   BOX_SIZE				{ CELL_SIZE + TOTAL_BORDER_SIZE };
-const sf::Color	   CELL_ALIVE_COLOR		{ sf::Color::Green };
+const sf::Color	   CELL_ALIVE_COLOR		{ sf::Color::Black };
 const sf::Color	   CELL_DEAD_COLOR		{ sf::Color::White };
+const sf::Color	   LINE_COLOR			{ sf::Color::Color(235, 235, 235) };
 const float		   CELLS_HORIZONTAL		{ APP_BOUNDS.x / BOX_SIZE }; // cell_index(border_left + cell_width + border_right) = cell_x
 const float		   CELLS_VERTICAL		{ APP_BOUNDS.y / BOX_SIZE }; // cell_index(border_left + cell_height + border_right) = cell_y
-const sf::Time	   SIMULATION_UPDATE_INTERVAL{ sf::seconds(3.f) };
+const sf::Time	   SIMULATION_UPDATE_INTERVAL{ sf::seconds(1.5f) };
 
 // 800 / 25 = 32 cells @ 25 pixels across
 // 600 / 25 = 24 cells
@@ -134,8 +135,6 @@ int main()
 
 			if (time_since_last_cell_simulation_update >= SIMULATION_UPDATE_INTERVAL) {
 				time_since_last_cell_simulation_update = sf::Time::Zero;
-				//todo update board -> run board rules, for all cell in Cells{ run rules against its neighbors, check if empty neighbors should live, if cell should die }
-			
 				std::map<std::pair<int, int>, Cell> updated_board = board;
 
 				for (const auto& item : board) {
@@ -189,7 +188,7 @@ int main()
 		}
 
 		// RENDER
-		window.clear(sf::Color::Black);
+		window.clear(LINE_COLOR);
 		for (const auto& item : board) {
 			window.draw(item.second.shape);
 		}
@@ -197,10 +196,13 @@ int main()
 	}
 	return EXIT_SUCCESS;
 } // BE KIND
+
+
 // todo JT pass
-
-
-
-// todo line color grey, active cell black, inactive cell white
-// todo json loader
+// todo refactor into classes
+// todo refactor into functions
+// todo infinite board, cells don't die on the side of the screen
+// todo scroll with arrow keys to move around
+// todo resize window
+// todo json config loader
 
