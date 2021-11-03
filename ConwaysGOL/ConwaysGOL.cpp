@@ -9,6 +9,8 @@ const sf::Vector2u APP_BOUNDS			{ 800, 600 };
 const sf::Vector2i BOARD_BOUNDS			{ 32, 24 };
 const float		   BORDER_SIZE			{ 2.f };
 const float		   BOX_SIZE				{ CELL_SIZE + TOTAL_BORDER_SIZE };
+const sf::Color	   CELL_ALIVE_COLOR		{ sf::Color::Green };
+const sf::Color	   CELL_DEAD_COLOR		{ sf::Color::Black };
 const float		   CELL_SIZE			{ 21.f }; // should be a single value, always going to be square
 const float		   CELLS_HORIZONTAL		{ APP_BOUNDS.x / BOX_SIZE }; // cell_index(border_left + cell_width + border_right) = cell_x
 const float		   CELLS_VERTICAL		{ APP_BOUNDS.y / BOX_SIZE }; // cell_index(border_left + cell_height + border_right) = cell_y
@@ -19,6 +21,7 @@ const float		   TOTAL_BORDER_SIZE	{ 2 * BORDER_SIZE };
 // 600 / 25 = 24 cells
 
 struct Cell {
+	bool isalive = false;
 	sf::RectangleShape shape{};
 };
 
@@ -38,12 +41,14 @@ int main()
 	for (int row = 0; row < CELLS_HORIZONTAL; row++) {
 		for (int col = 0; col < CELLS_VERTICAL; col++) {
 			Cell cell;
+			cell.shape.setFillColor(CELL_DEAD_COLOR);
+
 			int cell_x = (row * (CELL_SIZE + TOTAL_BORDER_SIZE)) + BORDER_SIZE;
 			int cell_y = (col * (CELL_SIZE + TOTAL_BORDER_SIZE)) + BORDER_SIZE;
 
 			cell.shape.setPosition(cell_x, cell_y);
 			cell.shape.setSize(sf::Vector2f{ CELL_SIZE, CELL_SIZE });
-			board[{cell_x, cell_y}] = cell;
+			board[{ row, col }] = cell;
 		}
 	}
 
@@ -78,7 +83,21 @@ int main()
 				switch (event.mouseButton.button)
 				{
 				case sf::Mouse::Button::Left:
-					//mouse click { get moust pos, calculate what cell index of the array should update, populate it's neighbors'} active = !active
+					sf::Vector2i local_position = sf::Mouse::getPosition(window); // position relative to window
+					int row = int(std::floor((local_position.x - BORDER_SIZE) / (CELL_SIZE + TOTAL_BORDER_SIZE)));
+					int col = int(std::floor((local_position.y - BORDER_SIZE) / (CELL_SIZE + TOTAL_BORDER_SIZE)));
+					
+					if (board.count({ row, col })) {
+						auto cell = board.at(std::pair<int, int>{row, col});
+						if (cell.isalive) {
+							cell.isalive = false;
+							cell.shape.setFillColor(CELL_DEAD_COLOR);
+						}
+						else {
+							cell.isalive = true;
+							cell.shape.setFillColor(CELL_ALIVE_COLOR);
+						}
+					}
 					break;
 				default:
 					break;
@@ -100,6 +119,7 @@ int main()
 
 		// RENDER
 		window.clear(sf::Color::Black);
+		loop through map of all cells and draw them. 
 		for (Cell cell : board) {
 			window.draw(cell.shape);
 		}
