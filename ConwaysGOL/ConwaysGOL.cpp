@@ -8,14 +8,14 @@ const std::string  APP_NAME				{ "Conway's Game of Life" };
 const sf::Vector2u APP_BOUNDS			{ 800, 600 };
 const sf::Vector2i BOARD_BOUNDS			{ 32, 24 };
 const float		   BORDER_SIZE			{ 2.f };
+const float		   CELL_SIZE			{ 21.f };
+const float		   TOTAL_BORDER_SIZE	{ 2 * BORDER_SIZE };
 const float		   BOX_SIZE				{ CELL_SIZE + TOTAL_BORDER_SIZE };
 const sf::Color	   CELL_ALIVE_COLOR		{ sf::Color::Green };
 const sf::Color	   CELL_DEAD_COLOR		{ sf::Color::Black };
-const float		   CELL_SIZE			{ 21.f }; // should be a single value, always going to be square
 const float		   CELLS_HORIZONTAL		{ APP_BOUNDS.x / BOX_SIZE }; // cell_index(border_left + cell_width + border_right) = cell_x
 const float		   CELLS_VERTICAL		{ APP_BOUNDS.y / BOX_SIZE }; // cell_index(border_left + cell_height + border_right) = cell_y
 const sf::Time	   SIMULATION_UPDATE_INTERVAL{ sf::seconds(3.f) };
-const float		   TOTAL_BORDER_SIZE	{ 2 * BORDER_SIZE };
 
 // 800 / 25 = 32 cells @ 25 pixels across
 // 600 / 25 = 24 cells
@@ -69,6 +69,11 @@ int main()
 			case sf::Event::KeyReleased: {
 				switch (event.key.code) {
 				case sf::Keyboard::Space:
+					if (!cell_simulation_running || board.size() > 0) {
+						cell_simulation_running = true;
+					}
+					// todo tap space again to restart simulation
+
 					//if at the start of the gameand some cells are picked, start game
 					break;
 
@@ -83,19 +88,21 @@ int main()
 				switch (event.mouseButton.button)
 				{
 				case sf::Mouse::Button::Left:
-					sf::Vector2i local_position = sf::Mouse::getPosition(window); // position relative to window
-					int row = int(std::floor((local_position.x - BORDER_SIZE) / (CELL_SIZE + TOTAL_BORDER_SIZE)));
-					int col = int(std::floor((local_position.y - BORDER_SIZE) / (CELL_SIZE + TOTAL_BORDER_SIZE)));
-					
-					if (board.count({ row, col })) {
-						auto cell = board.at(std::pair<int, int>{row, col});
-						if (cell.isalive) {
-							cell.isalive = false;
-							cell.shape.setFillColor(CELL_DEAD_COLOR);
-						}
-						else {
-							cell.isalive = true;
-							cell.shape.setFillColor(CELL_ALIVE_COLOR);
+					if (!cell_simulation_running) {
+						sf::Vector2i local_position = sf::Mouse::getPosition(window); // position relative to window
+						int row = int(std::floor((local_position.x - BORDER_SIZE) / (CELL_SIZE + TOTAL_BORDER_SIZE)));
+						int col = int(std::floor((local_position.y - BORDER_SIZE) / (CELL_SIZE + TOTAL_BORDER_SIZE)));
+
+						if (board.count({ row, col })) {
+							auto cell = board.at(std::pair<int, int>{row, col});
+							if (cell.isalive) {
+								cell.isalive = false;
+								cell.shape.setFillColor(CELL_DEAD_COLOR);
+							}
+							else {
+								cell.isalive = true;
+								cell.shape.setFillColor(CELL_ALIVE_COLOR);
+							}
 						}
 					}
 					break;
@@ -113,17 +120,17 @@ int main()
 			time_since_last_cell_simulation_update += delta_time;
 
 			if (time_since_last_cell_simulation_update >= SIMULATION_UPDATE_INTERVAL) {
-				//update board -> run board rules, for all cell in Cells{ run rules against its neighbors, check if empty neighbors should live, if cell should die }
+				//todo update board -> run board rules, for all cell in Cells{ run rules against its neighbors, check if empty neighbors should live, if cell should die }
 			}
 		}
 
 		// RENDER
 		window.clear(sf::Color::Black);
-		loop through map of all cells and draw them. 
-		for (Cell cell : board) {
-			window.draw(cell.shape);
+		for (const auto& item : board) {
+			window.draw(item.second.shape);
 		}
 		window.display();
 	}
 	return EXIT_SUCCESS;
 } // BE KIND
+// todo JT pass
