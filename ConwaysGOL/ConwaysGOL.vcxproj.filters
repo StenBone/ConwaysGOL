@@ -18,8 +18,34 @@
     <ClCompile Include="ConwaysGOL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rules.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rules.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
