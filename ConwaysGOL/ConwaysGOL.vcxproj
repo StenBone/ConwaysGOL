@@ -144,6 +144,7 @@
     <ClCompile Include="BoardRenderer.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="ConwaysGOL.cpp" />
+    <ClCompile Include="Matrix2D.cpp" />
     <ClCompile Include="Rules.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="BoardProcessor.h" />
     <ClInclude Include="BoardRenderer.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="Matrix2D.h" />
     <ClInclude Include="Rules.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
