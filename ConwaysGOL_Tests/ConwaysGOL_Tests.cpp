@@ -2,6 +2,7 @@
 #include <boost/test/included/unit_test.hpp> //single-header
 #include "../ConwaysGOL/ConwaysGOL.cpp"
 #include <string>
+#include "../ConwaysGOL/Board.h"
 
 BOOST_AUTO_TEST_CASE(glider_test)
 {
@@ -25,7 +26,11 @@ BOOST_AUTO_TEST_CASE(glider_test)
     BOOST_CHECK(test_board == expected_value);
     */
 
-
+    Board test_board{
+        {0, 1, 0},
+        {0, 0, 1},
+        {1, 1, 1}
+    };
 
 
 

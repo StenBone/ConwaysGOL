@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardProcessor.cpp" />
+    <ClCompile Include="BoardRenderer.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="ConwaysGOL.cpp" />
     <ClCompile Include="Rules.cpp" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="BoardProcessor.h" />
+    <ClInclude Include="BoardRenderer.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Rules.h" />
   </ItemGroup>
