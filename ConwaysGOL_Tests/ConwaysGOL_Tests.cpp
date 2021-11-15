@@ -3,8 +3,33 @@
 #include "../ConwaysGOL/ConwaysGOL.cpp"
 #include <string>
 
-BOOST_AUTO_TEST_CASE(my_boost_test)
+BOOST_AUTO_TEST_CASE(glider_test)
 {
+    /**
+    * desired source
+    Creates a new board with cell layout below
+    Board test_board{
+        {0, 1, 0},
+        {0, 0, 1},
+        {1, 1, 1}
+    };
+    test_board = board.next_generation();
+
+    expected_board{
+        {0, 0, 0, 0},
+        {0, 1, 0, 1},
+        {0, 0, 1, 1},
+        {0, 0, 1, 0}
+    };
+
+    BOOST_CHECK(test_board == expected_value);
+    */
+
+
+
+
+
+
     std::string expected_value = "Bill";
 
     std::map<std::pair<int, int>, Cell> board{};
