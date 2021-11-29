@@ -151,12 +151,13 @@
     <Text Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="BoardProcessor.h" />
-    <ClInclude Include="BoardRenderer.h" />
-    <ClInclude Include="Cell.h" />
-    <ClInclude Include="Matrix2D.h" />
-    <ClInclude Include="Rules.h" />
+    <ClInclude Include="Board.hpp" />
+    <ClInclude Include="BoardProcessor.hpp" />
+    <ClInclude Include="BoardRenderer.hpp" />
+    <ClInclude Include="Cell.hpp" />
+    <ClInclude Include="Constants.hpp" />
+    <ClInclude Include="Matrix2D.hpp" />
+    <ClInclude Include="Rules.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

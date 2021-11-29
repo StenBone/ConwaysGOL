@@ -8,7 +8,7 @@ Inspiration: sf::Sprite
 todo templated parameters
 implement draw function
 */
-class Board : public Matrix2D, sf::Drawable {
+class Board : public sf::Drawable {
 public:
 
 private:

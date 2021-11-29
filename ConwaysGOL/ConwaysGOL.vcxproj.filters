@@ -41,22 +41,25 @@
     <Text Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Board.h">
+    <ClInclude Include="Board.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
+    <ClInclude Include="Cell.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Rules.h">
+    <ClInclude Include="Rules.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BoardProcessor.h">
+    <ClInclude Include="BoardProcessor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BoardRenderer.h">
+    <ClInclude Include="BoardRenderer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix2D.h">
+    <ClInclude Include="Matrix2D.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
